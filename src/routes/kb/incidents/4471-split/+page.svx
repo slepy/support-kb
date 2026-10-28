@@ -1,0 +1,68 @@
+---
+layout: runbook
+title: '#4471 split · three problems, not one'
+owner: support desk
+status: accepted
+reviewed: 2026-10-28
+signature: v1.eyJzdWIiOiI2NjgiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzE4MDEyNCwiZXhwIjoxNzkzMjY2NTI0fQ.EhoBd8eFymxKFwRy9u6vCdhmEonsDzdVqBQheY12m6A
+---
+
+<script>
+  import SplitTable from '#lib/kb/SplitTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const tickets = {
+    parser: 'https://github.com/slepy/support-kb/issues/1',
+    hint: 'https://github.com/slepy/support-kb/issues/2',
+    shift: 'https://github.com/slepy/support-kb/issues/3',
+  };
+</script>
+
+[#4471](/kb/incidents/4471) was merged as one issue and marked known: the parser reads dates
+month first. Read report by report, it holds three problems. Each now has its own ticket, and
+one fix does not close the others.
+
+<Callout kind="warn">
+Fixing the parser leaves the booking-v3 form and the one-day shifts broken. Do not close a
+report against the parser fix until you know which problem it is.
+</Callout>
+
+## The split
+
+<SplitTable ticket={4471} {tickets} />
+
+- **`parser`**: the shared parser reads every date month first, and every tenant on file
+  writes the day first. Day and month swap exactly: 7 April becomes 4 July. App, email and the
+  booking-v2 form.
+- **`hint`**: booking-v3 prints `MM/DD/YYYY` under its date field. People type what it says,
+  and the form reads it day first. Same symptom as `parser`, a different fix: the hint, not
+  the parser. Form reports from booking-v3 tenants only.
+- **`shift`**: the date moves by one day, or differs between two timezones ("Lisbon got
+  Tuesday, Toronto got Monday"). No swap. The desk had already noted these as a one-day move
+  (`desk-notes.json`) but counted them under the parser.
+
+## How a report is placed
+
+1. Count each report once, by its id. The ticket export pages overlap, so some reports come twice.
+2. Look up the tenant (`src/lib/data/tenants`), not the reporter's browser. Intake's tag
+   is a guess from the browser locale and disagrees with the tenant often (column "intake
+   tagged otherwise").
+3. A day-first tenant reporting through a booking-v3 form is `hint`. Any other channel or
+   form is `parser`.
+4. Read the body. If the date did not swap but moved by a day, it is `shift`: add its id to
+   `oneDayMove` in `desk-notes.json`.
+
+## Why it was one ticket
+
+Triage merges on the subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject)).
+These three problems share subjects like "Wrong day on the invite", so the rule put them
+together. The subject tells you the symptom. Only the tenant, the form and the body tell you
+which problem it is.
+
+## Since April
+
+<QueueTimeline ticket={4471} />
+
+<RenderStamp {signature} />
