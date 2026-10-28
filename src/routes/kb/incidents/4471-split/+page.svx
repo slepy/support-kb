@@ -25,9 +25,9 @@ month first. Read report by report, it holds three problems. Each has its own ti
 fix did not close the others.
 
 <Callout kind="warn">
-Engineering closed #4471 on 5 October: the parser is fixed (`fix(dates): parse dd/mm for eu
-locales`) and the booking-v3 form is retired, so `hint` won't be fixed. Neither touches
-`shift`. A one-day move reported after 5 October is still that bug: do not close it as a
+Engineering closed #4471 on 5 October: the parser is fixed (<code>fix(dates): parse dd/mm for eu locales</code>)
+ and the booking-v3 form is retired, so <code>hint</code> won't be fixed. Neither touches
+<code>shift</code>. A one-day move reported after 5 October is still that bug: do not close it as a
 duplicate of #4471.
 </Callout>
 

@@ -29,7 +29,7 @@
       {@const filed = tickets[p.problem]}
       <tr class:within={p.within} class:open={!filed || filed.state === 'open'}>
         <td><code>{p.problem}</code></td>
-        <td>{p.reports}{#if p.within}<span class="sub"> of the {p.within} count</span>{/if}</td>
+        <td>{p.reports}{#if p.within}<span class="sub">{" "}of the {p.within} count</span>{/if}</td>
         <td>{p.tenants}</td>
         <td>{p.mistagged}</td>
         <td class="sub">{p.firstSeen} → {p.lastSeen}</td>
