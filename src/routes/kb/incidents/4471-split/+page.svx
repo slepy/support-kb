@@ -14,34 +14,36 @@ signature: v1.eyJzdWIiOiI2NjgiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdC
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
   const tickets = {
-    parser: 'https://github.com/slepy/support-kb/issues/1',
-    hint: 'https://github.com/slepy/support-kb/issues/2',
-    shift: 'https://github.com/slepy/support-kb/issues/3',
+    parser: { href: 'https://github.com/slepy/support-kb/issues/1', state: 'fixed' },
+    hint: { href: 'https://github.com/slepy/support-kb/issues/2', state: "won't fix" },
+    shift: { href: 'https://github.com/slepy/support-kb/issues/3', state: 'open' },
   };
 </script>
 
 [#4471](/kb/incidents/4471) was merged as one issue and marked known: the parser reads dates
-month first. Read report by report, it holds three problems. Each now has its own ticket, and
-one fix does not close the others.
+month first. Read report by report, it holds three problems. Each has its own ticket, and one
+fix did not close the others.
 
 <Callout kind="warn">
-Fixing the parser leaves the booking-v3 form and the one-day shifts broken. Do not close a
-report against the parser fix until you know which problem it is.
+Engineering closed #4471 on 5 October: the parser is fixed (`fix(dates): parse dd/mm for eu
+locales`) and the booking-v3 form is retired, so `hint` won't be fixed. Neither touches
+`shift`. A one-day move reported after 5 October is still that bug: do not close it as a
+duplicate of #4471.
 </Callout>
 
 ## The split
 
 <SplitTable ticket={4471} {tickets} />
 
-- **`parser`**: the shared parser reads every date month first, and every tenant on file
+- **`parser`**: the shared parser read every date month first, and every tenant on file
   writes the day first. Day and month swap exactly: 7 April becomes 4 July. App, email and the
-  booking-v2 form.
-- **`hint`**: booking-v3 prints `MM/DD/YYYY` under its date field. People type what it says,
-  and the form reads it day first. Same symptom as `parser`, a different fix: the hint, not
-  the parser. Form reports from booking-v3 tenants only.
+  booking-v2 form. Fixed.
+- **`hint`**: booking-v3 printed `MM/DD/YYYY` under its date field. People typed what it said,
+  and the form read it day first. Same symptom as `parser`, a different fix. Form reports from
+  booking-v3 tenants only. The form is retired.
 - **`shift`**: the date moves by one day, or differs between two timezones ("Lisbon got
-  Tuesday, Toronto got Monday"). No swap. The desk had already noted these as a one-day move
-  (`desk-notes.json`) but counted them under the parser.
+  Tuesday, Toronto got Monday"). No swap. These are the desk's one-day moves
+  (`desk-notes.json`): counted under `parser`, where they were filed, but not fixed by it.
 
 ## How a report is placed
 

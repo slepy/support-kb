@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../../../_app/immutable/entry/start.tA6lW5K3.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/DGxa--N0.js" rel="modulepreload">
+    <link href="../../../_app/immutable/entry/start.BxpeZS4w.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/mYzo0qw7.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DgZ7eMIM.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.mMylwPnt.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.VJTVEgSF.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.B14MnPIm.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.MXBhZuHn.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/BhaJRSA3.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.DSXGHDYi.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/fw1hKlcw.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BUobAEgd.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/_qXQH2NN.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BlNrTger.js" rel="modulepreload">
@@ -18,19 +18,21 @@
 		<link href="../../../_app/immutable/assets/runbook.COyw0cbZ.css" rel="stylesheet">
 		<link href="../../../_app/immutable/assets/Callout.AbLv9dM_.css" rel="stylesheet">
 		<link href="../../../_app/immutable/assets/QueueTimeline.BwRNheVv.css" rel="stylesheet">
-		<link href="../../../_app/immutable/assets/_page.TgzQE-mv.css" rel="stylesheet">
+		<link href="../../../_app/immutable/assets/_page.hetA06E0.css" rel="stylesheet">
   </head>
   <body>
     <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 split · three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status accepted svelte-e2jw2j">accepted</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> was merged as one issue and marked known: the parser reads dates
-month first. Read report by report, it holds three problems. Each now has its own ticket, and
-one fix does not close the others.</p> <aside class="warn svelte-17bri61"><!---->Fixing the parser leaves the booking-v3 form and the one-day shifts broken. Do not close a
-report against the parser fix until you know which problem it is.<!----></aside><!----> <h2>The split</h2> <p class="sum svelte-xskqqx"><strong>412</strong> reports in #4471 (427 rows in the export, 15 of them repeats) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>channels</th><th>tenants</th><th>intake tagged otherwise</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr class="svelte-xskqqx"><td class="svelte-xskqqx"><code>parser</code></td><td class="svelte-xskqqx">374</td><td class="sub svelte-xskqqx">app 202 · email 147 · form 25</td><td class="svelte-xskqqx">11</td><td class="svelte-xskqqx">23</td><td class="sub svelte-xskqqx">2026-04-01 → 2026-10-04</td><td class="svelte-xskqqx"><!--[0--><a href="https://github.com/slepy/support-kb/issues/1">slepy/support-kb#1</a><!--]--></td></tr><tr class="svelte-xskqqx"><td class="svelte-xskqqx"><code>hint</code></td><td class="svelte-xskqqx">33</td><td class="sub svelte-xskqqx">form 33</td><td class="svelte-xskqqx">3</td><td class="svelte-xskqqx">15</td><td class="sub svelte-xskqqx">2026-04-17 → 2026-09-22</td><td class="svelte-xskqqx"><!--[0--><a href="https://github.com/slepy/support-kb/issues/2">slepy/support-kb#2</a><!--]--></td></tr><tr class="svelte-xskqqx"><td class="svelte-xskqqx"><code>shift</code></td><td class="svelte-xskqqx">5</td><td class="sub svelte-xskqqx">email 3 · app 2</td><td class="svelte-xskqqx">5</td><td class="svelte-xskqqx">5</td><td class="sub svelte-xskqqx">2026-04-02 → 2026-10-04</td><td class="svelte-xskqqx"><!--[0--><a href="https://github.com/slepy/support-kb/issues/3">slepy/support-kb#3</a><!--]--></td></tr><!--]--></tbody></table><!----> <ul><li><strong><code>parser</code></strong>: the shared parser reads every date month first, and every tenant on file
+month first. Read report by report, it holds three problems. Each has its own ticket, and one
+fix did not close the others.</p> <aside class="warn svelte-17bri61"><!---->Engineering closed #4471 on 5 October: the parser is fixed (`fix(dates): parse dd/mm for eu
+locales`) and the booking-v3 form is retired, so `hint` won't be fixed. Neither touches
+`shift`. A one-day move reported after 5 October is still that bug: do not close it as a
+duplicate of #4471.<!----></aside><!----> <h2>The split</h2> <p class="sum svelte-xskqqx"><strong>412</strong> reports in #4471 (427 rows in the export, 15 of them repeats) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>intake tagged otherwise</th><th>seen</th><th>ticket</th><th>state</th></tr></thead><tbody><!--[--><tr class="svelte-xskqqx"><td class="svelte-xskqqx"><code>parser</code></td><td class="svelte-xskqqx">379<!--[-1--><!--]--></td><td class="svelte-xskqqx">11</td><td class="svelte-xskqqx">23</td><td class="sub svelte-xskqqx">2026-04-01 → 2026-10-04</td><td class="svelte-xskqqx"><!--[0--><a href="https://github.com/slepy/support-kb/issues/1">slepy/support-kb#1</a><!--]--></td><td class="svelte-xskqqx">fixed</td></tr><tr class="svelte-xskqqx within open"><td class="svelte-xskqqx"><code>shift</code></td><td class="svelte-xskqqx">5<!--[0--><span class="sub svelte-xskqqx">of the parser count</span><!--]--></td><td class="svelte-xskqqx">5</td><td class="svelte-xskqqx">5</td><td class="sub svelte-xskqqx">2026-04-02 → 2026-10-04</td><td class="svelte-xskqqx"><!--[0--><a href="https://github.com/slepy/support-kb/issues/3">slepy/support-kb#3</a><!--]--></td><td class="svelte-xskqqx">open</td></tr><tr class="svelte-xskqqx"><td class="svelte-xskqqx"><code>hint</code></td><td class="svelte-xskqqx">33<!--[-1--><!--]--></td><td class="svelte-xskqqx">3</td><td class="svelte-xskqqx">15</td><td class="sub svelte-xskqqx">2026-04-17 → 2026-09-22</td><td class="svelte-xskqqx"><!--[0--><a href="https://github.com/slepy/support-kb/issues/2">slepy/support-kb#2</a><!--]--></td><td class="svelte-xskqqx">won't fix</td></tr><!--]--></tbody></table><!----> <ul><li><strong><code>parser</code></strong>: the shared parser read every date month first, and every tenant on file
 writes the day first. Day and month swap exactly: 7 April becomes 4 July. App, email and the
-booking-v2 form.</li> <li><strong><code>hint</code></strong>: booking-v3 prints <code>MM/DD/YYYY</code> under its date field. People type what it says,
-and the form reads it day first. Same symptom as <code>parser</code>, a different fix: the hint, not
-the parser. Form reports from booking-v3 tenants only.</li> <li><strong><code>shift</code></strong>: the date moves by one day, or differs between two timezones (“Lisbon got
-Tuesday, Toronto got Monday”). No swap. The desk had already noted these as a one-day move
-(<code>desk-notes.json</code>) but counted them under the parser.</li></ul> <h2>How a report is placed</h2> <ol><li>Count each report once, by its id. The ticket export pages overlap, so some reports come twice.</li> <li>Look up the tenant (<code>src/lib/data/tenants</code>), not the reporter’s browser. Intake’s tag
+booking-v2 form. Fixed.</li> <li><strong><code>hint</code></strong>: booking-v3 printed <code>MM/DD/YYYY</code> under its date field. People typed what it said,
+and the form read it day first. Same symptom as <code>parser</code>, a different fix. Form reports from
+booking-v3 tenants only. The form is retired.</li> <li><strong><code>shift</code></strong>: the date moves by one day, or differs between two timezones (“Lisbon got
+Tuesday, Toronto got Monday”). No swap. These are the desk’s one-day moves
+(<code>desk-notes.json</code>): counted under <code>parser</code>, where they were filed, but not fixed by it.</li></ul> <h2>How a report is placed</h2> <ol><li>Count each report once, by its id. The ticket export pages overlap, so some reports come twice.</li> <li>Look up the tenant (<code>src/lib/data/tenants</code>), not the reporter’s browser. Intake’s tag
 is a guess from the browser locale and disagrees with the tenant often (column “intake
 tagged otherwise”).</li> <li>A day-first tenant reporting through a booking-v3 form is <code>hint</code>. Any other channel or
 form is <code>parser</code>.</li> <li>Read the body. If the date did not swap but moved by a day, it is <code>shift</code>: add its id to <code>oneDayMove</code> in <code>desk-notes.json</code>.</li></ol> <h2>Why it was one ticket</h2> <p>Triage merges on the subject line (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>).
@@ -40,15 +42,15 @@ which problem it is.</p> <h2>Since April</h2> <figure><svg viewBox="0 0 648 140"
 			
 			<script>
 				{
-					__sveltekit_1ya8la4 = {
+					__sveltekit_8er0aa = {
 						base: new URL("../../..", location).pathname.slice(0, -1)
 					};
 
 					const element = document.currentScript.parentElement;
 
 					Promise.all([
-						import("../../../_app/immutable/entry/start.tA6lW5K3.js"),
-						import("../../../_app/immutable/entry/app.mMylwPnt.js")
+						import("../../../_app/immutable/entry/start.BxpeZS4w.js"),
+						import("../../../_app/immutable/entry/app.VJTVEgSF.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 5],
